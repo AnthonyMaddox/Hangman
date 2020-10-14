@@ -64,9 +64,13 @@ function handleGuess(chosenLetter) {
     mistakes++;
     updateMistakes();
     checkIfGameLost();
+    updateHangmanPicture();
   }
 }
 
+function updateHangmanPicture() {
+  document.getElementById("hangmanPic").src = "./images/" + mistakes + ".jpg";
+}
 function checkIfGameWon() {
   if (wordStatus === answer) {
     document.getElementById("keyboard").innerHTML = "You won!!";
@@ -74,6 +78,8 @@ function checkIfGameWon() {
 }
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
+    document.getElementById("wordSpotlight").innerHTML =
+      "The answer was " + answer;
     document.getElementById("keyboard").innerHTML = "You lost...";
   }
 }
