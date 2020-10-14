@@ -22,7 +22,6 @@ let wordStatus = null;
 
 //fuctions
 
-
 function randomWord() {
   answer =
     programming_languages[
@@ -60,7 +59,7 @@ function handleGuess(chosenLetter) {
   document.getElementById(chosenLetter).setAttribute("disabled", true);
   if (answer.indexOf(chosenLetter) >= 0) {
     guessedWord();
-    checkIfGameWon()
+    checkIfGameWon();
   } else if (answer.indexOf(chosenLetter) === -1) {
     mistakes++;
     updateMistakes();
@@ -68,15 +67,15 @@ function handleGuess(chosenLetter) {
   }
 }
 
-function checkIfGameWon () {
-    if (wordStatus === answer) {
-        document.getElementById('keyboard').innerHTML = "You won!!"
-    }
+function checkIfGameWon() {
+  if (wordStatus === answer) {
+    document.getElementById("keyboard").innerHTML = "You won!!";
+  }
 }
-function checkIfGameLost () {
-    if (mistakes === maxWrong) {
-        document.getElementById('keyboard').innerHTML = "You lost..."
-    }
+function checkIfGameLost() {
+  if (mistakes === maxWrong) {
+    document.getElementById("keyboard").innerHTML = "You lost...";
+  }
 }
 
 function guessedWord() {
@@ -92,13 +91,13 @@ function updateMistakes() {
 }
 
 function reset() {
-    mistakes = 0
-    guessed = [
-
-    ]
-    document.getElementById('hangmanPic').src = './images/0.jpg';
-    randomWord();
-
+  mistakes = 0;
+  guessed = [];
+  document.getElementById("hangmanPic").src = "./images/0.jpg";
+  randomWord();
+  guessedWord();
+  updateMistakes();
+  generateButtons();
 }
 
 document.getElementById("max-wrong").innerHTML = maxWrong;
